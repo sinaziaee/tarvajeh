@@ -1,3 +1,10 @@
+String kAppName(bool isPersian){
+  if(isPersian){
+    return 'تارواژه';
+  }
+  return 'Tarvajeh';
+}
+
 String kSettingsTitle(bool isPersian){
   if(isPersian){
     return 'تنظیمات';
