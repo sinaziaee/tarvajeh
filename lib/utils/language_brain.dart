@@ -199,3 +199,87 @@ String kPurposeQuote(bool isPersian){
       'So, the language is like a curtain on the door of the soul \n'
       '"Rumi"';
 }
+
+String kRoleDev(bool isPersian){
+  if(isPersian){
+    return 'توسعه‌دهنده';
+  }
+  return 'DEVELOPER';
+}
+
+String kRoleProductOwner(bool isPersian){
+  if(isPersian){
+    return 'مدیر پروژه';
+  }
+  return 'PROJECT MANAGER';
+}
+
+String kNameDev(bool isPersian){
+  if(isPersian){
+    return 'فاطمه کریم‌خانی';
+  }
+  return 'Fatemeh Karimkhani';
+}
+
+String kNameProductOwner(bool isPersian){
+  if(isPersian){
+    return 'دکتر حسین رحمانی';
+  }
+  return 'Dr. Hossein Rahmani';
+}
+
+String kParticipationTitle(bool isPersian){
+  if(isPersian){
+    return 'مشارکت در پرسش‌ نامه';
+  }
+  return 'Taking the test';
+}
+
+String kLine1(bool isPersian){
+  if(isPersian){
+    return ' در این آزمون، ۱۵ واژه برای شما نمایش داده می‌شود.';
+  }
+  return ' This test will show you 15 words.';
+}
+
+String kLine2(bool isPersian){
+  if(isPersian){
+    return ' اولین، دومین و سومین واژه‌ای که پس از کمی فکر کردن درباره‌ی هر واژه به ذهنتان می‌رسد را وارد کنید.';
+  }
+  return ' Enter the first, second, and third word that come to your mind, after a little thinking about the shown word.';
+}
+
+String kLine3(bool isPersian){
+  if(isPersian){
+    return ' لطفا در پاسخ ترجیحا یک یا دو واژه (بدون توضیح) وارد کنید.';
+  }
+  return ' Please enter one or two words in the answer (without explanation).';
+}
+
+String kLine4(bool isPersian){
+  if(isPersian){
+    return ' اگر کم‌تر از سه پاسخ به ذهنتان رسید، می‌توانید گزینه‌ی «ثبت پاسخ» را انتخاب کنید.';
+  }
+  return ' If you have less than three answers, you can select the "Next Word" option.';
+}
+
+String kLine5(bool isPersian){
+  if(isPersian){
+    return ' لطفا از وارد کردن پاسخ‌هایی مانند «نمی‌دانم» خودداری کنید.';
+  }
+  return ' Please refrain from entering answers such as "I do not know".';
+}
+
+String kLine6(bool isPersian){
+  if(isPersian){
+    return ' در صورتی که معنی واژه‌ای را نمی‌دانستید می‌توانید گزینه‌ی «پاسخ سفید» را انتخاب کنید.';
+  }
+  return ' If you do not know the meaning of the word, you can select the "White Answer" option.';
+}
+
+String kLine7(bool isPersian){
+  if(isPersian){
+    return ' هرگاه مایل به ادامه‌ی پاسخ‌گویی نبودید، می‌توانید گزینه‌ی «پایان» را انتخاب کنید.';
+  }
+  return ' If you do not want to continue answering, you can select the "End" option.';
+}
