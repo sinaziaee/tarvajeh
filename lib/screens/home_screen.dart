@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tarvajeh/components/custom_list_tile.dart';
 import 'package:tarvajeh/screens/contact_us_screen.dart';
+import 'package:tarvajeh/screens/form_screen.dart';
 import 'package:tarvajeh/screens/goal_screen.dart';
 import 'package:tarvajeh/screens/question_screen.dart';
 import 'package:tarvajeh/screens/result_screen.dart';
@@ -54,7 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
               CustomListTile(
                 title: kTestMeTitle(isPersian),
                 onTap: () {
-                  _navigateToQuestionScreen();
+                  // _navigateToQuestionScreen();
+                  _navigateToFormScreen();
                 },
                 iconData: FontAwesomeIcons.question,
               ),
@@ -91,10 +93,26 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: Text(
                   kLanguageTitle(isPersian),
                 ),
+                // subtitle: Padding(
+                //   padding: EdgeInsets.only(left: 20),
+                //   child: Text(
+                //     kLanguage(isPersian),
+                //   ),
+                // ),
                 subtitle: Padding(
-                  padding: EdgeInsets.only(left: 20),
-                  child: Text(
-                    kLanguage(isPersian),
+                  padding: EdgeInsets.only(top: 5),
+                  child: Row(
+                    children: [
+                      Image(
+                        image: AssetImage('assets/images/${isPersian ? 'flag_iran.png' : 'flag_britain.png'}'),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        kLanguage(isPersian),
+                      ),
+                    ],
                   ),
                 ),
                 trailing: Switch(
@@ -166,6 +184,16 @@ class _HomeScreenState extends State<HomeScreen> {
     Navigator.pushNamed(
       context,
       QuestionScreen.id,
+      arguments: {
+        'isPersian': isPersian,
+      },
+    );
+  }
+
+  _navigateToFormScreen() {
+    Navigator.pushNamed(
+      context,
+      FormScreen.id,
       arguments: {
         'isPersian': isPersian,
       },

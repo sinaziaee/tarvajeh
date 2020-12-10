@@ -72,11 +72,95 @@ String kButtonNoAnswerText(bool isPersian){
   if(isPersian){
     return 'پاسخ سفید';
   }
-  return 'No Answer';
+  return 'White Answer';
 }
+
 String kButtonFinishText(bool isPersian){
   if(isPersian){
     return 'پایان';
   }
-  return 'Finish';
+  return 'End';
 }
+
+String kFinishDialogTitle(bool isPersian){
+  if(isPersian){
+    return 'سپاس از مشارکت شما';
+  }
+  return 'Thanks for your participation';
+}
+
+String kFinishDialogContent(bool isPersian){
+  if(isPersian){
+    return 'برای مقایسه ی پاسخهای خود با دیگران، میتوانید ایمیل خود را '
+        'وارد کنید. لینک نتایج شما از طریق ایمیل برای شما ارسال خواهد شد. \n'
+        'همچنین اگر انتقاد یا پیشنهادی دارید لطفا برای ما ارسال کنید.';
+  }
+  return 'You can enter your email to compare your answers with others.'
+      'Your results link will be emailed to you.\n'
+      'Also, if you have any suggestions or criticisms, please send them to us.';
+}
+
+String kFinishDialogButton(bool isPersian){
+  if(isPersian){
+    return 'ارسال';
+  }
+  return 'Send';
+}
+
+String kDialogHintEmail(bool isPersian){
+  if(isPersian){
+    return 'آدرس ایمیل';
+  }
+  return 'Email address';
+}
+
+String kDialogHintSugCri(bool isPersian){
+  if(isPersian){
+    return 'انتقاد یا پیشنهاد';
+  }
+  return 'Suggestion or criticism';
+}
+
+String kFormTitle(bool isPersian){
+  if(isPersian){
+    return 'اطلاعات اولیه زیر را وارد کنید';
+  }
+  return 'Enter Your Basic Profile';
+}
+
+String kFormAge(bool isPersian){
+  if(isPersian){
+    return 'سن';
+  }
+  return 'Age';
+}
+
+String kFormGender(bool isPersian){
+  if(isPersian){
+    return 'جنسیت';
+  }
+  return 'Gender';
+}
+
+String kFormNativeLanguage(bool isPersian){
+  if(isPersian){
+    return 'زبان مادری';
+  }
+  return 'Native Language';
+}
+
+String kFormTestLanguage(bool isPersian){
+  if(isPersian){
+    return 'زبان پرسش نامه';
+  }
+  return 'Test Language';
+}
+
+String kFormButton(bool isPersian){
+  if(isPersian){
+    return 'ثبت';
+  }
+  return 'Submit';
+}
+
+

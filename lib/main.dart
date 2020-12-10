@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tarvajeh/screens/about_us_screen.dart';
 import 'package:tarvajeh/screens/contact_us_screen.dart';
+import 'package:tarvajeh/screens/form_screen.dart';
 import 'package:tarvajeh/screens/goal_screen.dart';
 import 'package:tarvajeh/screens/home_screen.dart';
 import 'package:tarvajeh/screens/intro_screen.dart';
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
         GoalScreen.id: (context) => GoalScreen(),
         IntroScreen.id: (context) => IntroScreen(),
         ContactScreen.id: (context) => ContactScreen(),
+        FormScreen.id: (context) => FormScreen(),
       },
     );
   }
