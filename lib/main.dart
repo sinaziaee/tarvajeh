@@ -40,6 +40,10 @@ class MyApp extends StatelessWidget {
       //   }
       //   return supportedLocales.first;
       // },
+      theme: ThemeData(
+        // accentColor: Colors.transparent,
+        primaryColor: Colors.orange,
+      ),
       initialRoute: HomeScreen.id,
       routes: {
         HomeScreen.id: (context) => HomeScreen(),
