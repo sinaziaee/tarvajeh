@@ -110,7 +110,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                       ),
                     );
                   },
-                  text: kButtonSubmitText(isPersian),
+                  text: kButtonNextText(isPersian),
                 ),
                 CustomBorderButton(
                   text: kButtonNoAnswerText(isPersian),

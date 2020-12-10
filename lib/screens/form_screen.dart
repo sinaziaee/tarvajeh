@@ -1,10 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tarvajeh/components/custom_button.dart';
+import 'package:tarvajeh/components/gender_button.dart';
+import 'package:tarvajeh/components/language_button.dart';
 import 'package:tarvajeh/utils/language_brain.dart';
 
 import 'question_screen.dart';
 
 class FormScreen extends StatefulWidget {
   static String id = 'form_screen';
+
   @override
   _FormScreenState createState() => _FormScreenState();
 }
@@ -12,18 +17,208 @@ class FormScreen extends StatefulWidget {
 class _FormScreenState extends State<FormScreen> {
   bool isPersian;
   Map args;
+  TextEditingController ageController = TextEditingController();
+  Color activeColor = Colors.red[300];
+  Color deActiveColor = Colors.white;
+  Color activeLanguageColor = Colors.orange;
+  bool isManSelected = false, isWomanSelected = false, isPersianNative = false, isEnglishNative = false, isPersianForm = false, isEnglishForm = false;
 
   @override
   Widget build(BuildContext context) {
     args = ModalRoute.of(context).settings.arguments;
     isPersian = args['isPersian'];
+
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        centerTitle: true,
         title: Text(
           kFormTitle(isPersian),
         ),
       ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 30),
+          child: Column(
+            crossAxisAlignment:
+                isPersian ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 50,
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                kFormAge(isPersian),
+                textDirection:
+                    isPersian ? TextDirection.rtl : TextDirection.ltr,
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                height: 40,
+                width: 100,
+                child: TextField(
+                  controller: ageController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                kFormGender(isPersian),
+                textDirection:
+                isPersian ? TextDirection.rtl : TextDirection.ltr,
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GenderButton(
+                    imgPath: 'assets/images/man.png',
+                    color: isManSelected?activeColor:deActiveColor,
+                    onPressed: () {
+                      onGenderSelected('man');
+                    },
+                  ),
+                  GenderButton(
+                    imgPath: 'assets/images/woman.png',
+                    color: isWomanSelected?activeColor:deActiveColor,
+                    onPressed: () {
+                      onGenderSelected('woman');
+                    },
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                kFormNativeLanguage(isPersian),
+                textDirection:
+                isPersian ? TextDirection.rtl : TextDirection.ltr,
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  LanguageButton(
+                    text: isPersian?'فارسی':'Persian',
+                    color: isPersianNative?activeLanguageColor:deActiveColor,
+                    onPressed: () {
+                      onNativeLanguageSelected('persian');
+                    },
+                  ),
+                  LanguageButton(
+                    text: isPersian?'انگلیسی':'English',
+                    color: isEnglishNative?activeLanguageColor:deActiveColor,
+                    onPressed: () {
+                      onNativeLanguageSelected('english');
+                    },
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                kFormTestLanguage(isPersian),
+                textDirection:
+                isPersian ? TextDirection.rtl : TextDirection.ltr,
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  LanguageButton(
+                    text: isPersian?'فارسی':'Persian',
+                    color: isPersianForm?activeLanguageColor:deActiveColor,
+                    onPressed: () {
+                      onTestLanguageSelected('persian');
+                    },
+                  ),
+                  LanguageButton(
+                    text: isPersian?'انگلیسی':'English',
+                    color: isEnglishForm?activeLanguageColor:deActiveColor,
+                    onPressed: () {
+                      onTestLanguageSelected('english');
+                    },
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              CustomButton(
+                color: Colors.orange,
+                onPressed: (){
+                  _submit();
+                },
+                text: kButtonSubmit(isPersian),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
+  }
+
+  onGenderSelected(String gender){
+    if(gender == 'man'){
+      isManSelected = true;
+      isWomanSelected = false;
+    }
+    else {
+      isManSelected = false;
+      isWomanSelected = true;
+    }
+    setState(() {});
+  }
+
+  onNativeLanguageSelected(String language){
+    if(language == 'persian'){
+      isPersianNative = true;
+      isEnglishNative = false;
+    }
+    else {
+      isPersianNative = false;
+      isEnglishNative = true;
+    }
+    setState(() {});
+  }
+
+  onTestLanguageSelected(String language){
+    if(language == 'persian'){
+      isPersianForm = true;
+      isEnglishForm = false;
+    }
+    else {
+      isPersianForm = false;
+      isEnglishForm = true;
+    }
+    setState(() {});
+  }
+
+  _submit(){
+    // do submitting
+    _navigateToQuestionScreen();
   }
 
   _navigateToQuestionScreen() {
@@ -35,5 +230,4 @@ class _FormScreenState extends State<FormScreen> {
       },
     );
   }
-
 }
