@@ -36,7 +36,7 @@ dependencies:
   http: ^0.12.2
   shared_preferences: ^0.5.1+2
   font_awesome_flutter: ^8.10.1
-#  url_launcher: ^5.7.10
+  webview_flutter: ^1.0.7
 
 
 

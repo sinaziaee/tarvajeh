@@ -24,7 +24,7 @@ class ContactBox extends StatelessWidget {
             name,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 25,
+              fontSize: 20,
             ),
           ),
           SizedBox(height: 10,),
@@ -32,7 +32,7 @@ class ContactBox extends StatelessWidget {
             role,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 20,
+              fontSize: 18,
             ),
           ),
           SizedBox(height: 10,),
@@ -47,7 +47,7 @@ class ContactBox extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 15,
                   ),
                 ),
               ],
@@ -69,7 +69,7 @@ class ContactBox extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 15,
                       ),
                     ),
                   ),

@@ -1,24 +1,59 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tarvajeh/utils/constants.dart';
 
 class CustomText extends StatelessWidget {
-
   final String text;
   final TextDirection direction;
-  final MainAxisAlignment rowDirection;
+  final bool isPersian;
 
-  CustomText({this.direction, this.text, this.rowDirection});
+  CustomText({this.direction, this.text, this.isPersian});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        mainAxisAlignment: rowDirection,
-        children: [
-          Icon(Icons.done, color: kMediumGreen,),
-          Text(text),
-        ],
-      ),
-    );
+    if(isPersian){
+      return Container(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        margin: EdgeInsets.only(bottom: 10),
+        child: Row(
+          children: [
+            Expanded(
+              child: Text(
+                text,
+                textDirection: direction,
+                maxLines: 3,
+              ),
+            ),
+            Icon(
+              Icons.done,
+              color: kLightGreen,
+              size: 30,
+            ),
+          ],
+        ),
+      );
+    }
+    else {
+      return Container(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        margin: EdgeInsets.only(bottom: 10),
+        child: Row(
+          children: [
+            Icon(
+              Icons.done,
+              color: kLightGreen,
+              size: 30,
+            ),
+            Expanded(
+              child: Text(
+                text,
+                textDirection: direction,
+                maxLines: 3,
+              ),
+            ),
+          ],
+        ),
+      );
+    }
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tarvajeh/components/costum_text.dart';
 import 'package:tarvajeh/components/custom_list_tile.dart';
+import 'package:tarvajeh/components/drawer.dart';
 import 'package:tarvajeh/screens/contact_us_screen.dart';
 import 'package:tarvajeh/screens/form_screen.dart';
 import 'package:tarvajeh/screens/goal_screen.dart';
@@ -23,177 +25,96 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print(isPersian);
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          GestureDetector(
+            onTap: (){
+              isPersian = !isPersian;
+              setState(() {});
+            },
+            child: Container(
+              margin: EdgeInsets.only(right: 30),
+              child: Image(
+                width: 40,
+                image: AssetImage(
+                    'assets/images/${isPersian ? 'flag_iran.png' : 'flag_britain.png'}'),
+              ),
+            ),
+          ),
+        ],
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text('Home screen'),
       ),
-      drawer: Drawer(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              UserAccountsDrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.transparent,
-                ),
-                currentAccountPicture: Image(
-                  image: AssetImage('assets/images/logo.png'),
-                ),
-                accountEmail: Text(
-                  'tarvajeh.ir',
-                  style: TextStyle(color: Colors.grey),
-                ),
-                accountName: Text(
-                  kAppName(isPersian),
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-              SizedBox(),
-              CustomListTile(
-                title: kTestMeTitle(isPersian),
-                onTap: () {
-                  // _navigateToQuestionScreen();
-                  _navigateToFormScreen();
-                },
-                iconData: FontAwesomeIcons.question,
-              ),
-              CustomListTile(
-                title: kGoalTitle(isPersian),
-                onTap: () {
-                  _navigateToGoalScreen();
-                },
-                iconData: Icons.group_work,
-              ),
-              CustomListTile(
-                title: kResultTitle(isPersian),
-                onTap: () {
-                  _navigateToResultsScreen();
-                },
-                iconData: Icons.book,
-              ),
-              CustomListTile(
-                title: kContactUsTitle(isPersian),
-                onTap: () {
-                  _navigateToContactScreen();
-                },
-                iconData: Icons.contact_mail,
-              ),
-              CustomListTile(
-                title: kSettingsTitle(isPersian),
-                onTap: () {
-                  _navigateToSettingsScreen();
-                },
-                iconData: Icons.settings,
-              ),
-              ListTile(
-                leading: Icon(Icons.language),
-                title: Text(
-                  kLanguageTitle(isPersian),
-                ),
-                // subtitle: Padding(
-                //   padding: EdgeInsets.only(left: 20),
-                //   child: Text(
-                //     kLanguage(isPersian),
-                //   ),
-                // ),
-                subtitle: Padding(
-                  padding: EdgeInsets.only(top: 5),
-                  child: Row(
-                    children: [
-                      Image(
-                        image: AssetImage('assets/images/${isPersian ? 'flag_iran.png' : 'flag_britain.png'}'),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        kLanguage(isPersian),
-                      ),
-                    ],
-                  ),
-                ),
-                trailing: Switch(
-                  value: isPersian,
-                  onChanged: (value) {
-                    isPersian = value;
-                    setState(() {});
-                  },
-                ),
-              ),
-            ],
-          ),
+      drawer: CustomDrawer(
+        isPersian: isPersian,
+        navigateToContactScreen: () {
+          navigateToScreen(ContactScreen.id);
+        },
+        navigateToFormScreen: () {
+          navigateToScreen(FormScreen.id);
+        },
+        navigateToGoalScreen: () {
+          navigateToScreen(GoalScreen.id);
+        },
+        navigateToResultsScreen: () {
+          navigateToScreen(ResultsScreen.id);
+        },
+        navigateToSettingsScreen: () {
+          navigateToScreen(SettingsScreen.id);
+        },
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 20,),
+            CustomText(
+              direction: isPersian ? TextDirection.rtl : TextDirection.ltr,
+              text: kLine1(isPersian),
+              isPersian: isPersian,
+            ),
+            CustomText(
+              direction: isPersian ? TextDirection.rtl : TextDirection.ltr,
+              text: kLine2(isPersian),
+              isPersian: isPersian,
+            ),
+            CustomText(
+              direction: isPersian ? TextDirection.rtl : TextDirection.ltr,
+              text: kLine3(isPersian),
+              isPersian: isPersian,
+            ),
+            CustomText(
+              direction: isPersian ? TextDirection.rtl : TextDirection.ltr,
+              text: kLine4(isPersian),
+              isPersian: isPersian,
+            ),
+            CustomText(
+              direction: isPersian ? TextDirection.rtl : TextDirection.ltr,
+              text: kLine5(isPersian),
+              isPersian: isPersian,
+            ),
+            CustomText(
+              direction: isPersian ? TextDirection.rtl : TextDirection.ltr,
+              text: kLine6(isPersian),
+              isPersian: isPersian,
+            ),
+            CustomText(
+              direction: isPersian ? TextDirection.rtl : TextDirection.ltr,
+              text: kLine7(isPersian),
+              isPersian: isPersian,
+            ),
+          ],
         ),
       ),
     );
   }
 
-  _navigateToGoalScreen() {
+  navigateToScreen(String route) {
     Navigator.pushNamed(
       context,
-      GoalScreen.id,
-      arguments: {
-        'isPersian': isPersian,
-      },
-    );
-  }
-
-  _navigateToContactScreen() {
-    Navigator.pushNamed(
-      context,
-      ContactScreen.id,
-      arguments: {
-        'isPersian': isPersian,
-      },
-    );
-  }
-
-  _navigateToAboutUsScreen() {
-    Navigator.pushNamed(
-      context,
-      AboutScreen.id,
-      arguments: {
-        'isPersian': isPersian,
-      },
-    );
-  }
-
-  _navigateToResultsScreen() {
-    Navigator.pushNamed(
-      context,
-      ResultsScreen.id,
-      arguments: {
-        'isPersian': isPersian,
-      },
-    );
-  }
-
-  _navigateToSettingsScreen() {
-    Navigator.pushNamed(
-      context,
-      SettingsScreen.id,
-      arguments: {
-        'isPersian': isPersian,
-      },
-    );
-  }
-
-  _navigateToQuestionScreen() {
-    Navigator.pushNamed(
-      context,
-      QuestionScreen.id,
-      arguments: {
-        'isPersian': isPersian,
-      },
-    );
-  }
-
-  _navigateToFormScreen() {
-    Navigator.pushNamed(
-      context,
-      FormScreen.id,
+      route,
       arguments: {
         'isPersian': isPersian,
       },
