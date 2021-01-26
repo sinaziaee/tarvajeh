@@ -35,8 +35,8 @@ class _ContactScreenState extends State<ContactScreen> {
           title: Text(
             kContactUsTitle(isPersian),
             style: isPersian?PersianFonts.Shabnam.copyWith(
-              fontSize: 22, color: Colors.white,
-            ): TextStyle(fontSize: 22, color: Colors.white),
+              fontSize: 25, color: Colors.white,
+            ): TextStyle(fontSize: 25, color: Colors.white),
           ),
           automaticallyImplyLeading: !isPersian,
           actions: [

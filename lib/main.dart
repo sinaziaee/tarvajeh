@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter/services.dart';
 import 'package:tarvajeh/screens/about_us_screen.dart';
 import 'package:tarvajeh/screens/contact_us_screen.dart';
 import 'package:tarvajeh/screens/form_screen.dart';
@@ -17,6 +17,10 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp(
       theme: ThemeData(
         // primaryColor: Colors.orange,

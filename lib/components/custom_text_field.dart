@@ -48,7 +48,7 @@ class CustomTextField extends StatelessWidget {
               child: TextFormField(
                 textAlignVertical: TextAlignVertical.center,
                 textAlign: TextAlign.center,
-                cursorColor: Colors.white,
+                cursorColor: Colors.lightGreenAccent,
                 controller: controller,
                 maxLength: 60,
                 style: isPersian
@@ -99,7 +99,7 @@ class CustomTextField extends StatelessWidget {
               child: TextFormField(
                 textAlignVertical: TextAlignVertical.center,
                 textAlign: TextAlign.center,
-                cursorColor: Colors.white,
+                cursorColor: Colors.lightGreenAccent,
                 controller: controller,
                 maxLength: 60,
                 style: isPersian

@@ -35,9 +35,12 @@ class _GoalScreenState extends State<GoalScreen> {
           centerTitle: true,
           title: Text(
             kGoalTitle(isPersian),
-            style: isPersian?PersianFonts.Shabnam.copyWith(
-              fontSize: 20, color: Colors.white,
-            ): TextStyle(fontSize: 20, color: Colors.white),
+            style: isPersian
+                ? PersianFonts.Shabnam.copyWith(
+              fontSize: 25,
+              color: Colors.white,
+            )
+                : TextStyle(fontSize: 25, color: Colors.white),
           ),
           automaticallyImplyLeading: !isPersian,
           actions: [

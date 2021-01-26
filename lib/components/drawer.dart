@@ -43,16 +43,19 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 decoration: BoxDecoration(
                   color: Colors.transparent,
                 ),
-                currentAccountPicture: Image(
-                  image: AssetImage('assets/images/logo.png'),
+                currentAccountPicture: CircleAvatar(
+                  backgroundColor: Colors.white,
+                  child: Image(
+                    image: AssetImage('assets/images/logo.png'),
+                  ),
                 ),
                 accountEmail: Text(
                   'tarvajeh.ir',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
                 accountName: Text(
                   kAppName(widget.isPersian),
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
               SizedBox(),

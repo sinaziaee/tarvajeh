@@ -38,6 +38,7 @@ dependencies:
   font_awesome_flutter: ^8.10.1
   webview_flutter: ^1.0.7
   persian_fonts: ^1.0.2
+  connectivity: ^2.0.2
 
 
 

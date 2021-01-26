@@ -45,6 +45,12 @@ class _FormScreenState extends State<FormScreen> {
           centerTitle: true,
           title: Text(
             kFormTitle(isPersian),
+            style: isPersian
+                ? PersianFonts.Shabnam.copyWith(
+              fontSize: 25,
+              color: Colors.white,
+            )
+                : TextStyle(fontSize: 25, color: Colors.white),
           ),
           automaticallyImplyLeading: !isPersian,
           actions: [
@@ -86,14 +92,43 @@ class _FormScreenState extends State<FormScreen> {
                   height: 40,
                   width: 100,
                   child: TextField(
+                    cursorColor: Colors.deepOrange,
                     controller: ageController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
+                      contentPadding: EdgeInsets.only(
+                        bottom: 20, // HERE THE IMPORTANT PART
+                      ),
                       focusColor: Colors.white,
                       fillColor: Colors.white,
                       filled: true,
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(
+                            color: Colors.deepOrange,
+                            width: 2,
+                            style: BorderStyle.solid),
+                      ),
+                      disabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(
+                            color: Colors.deepOrange,
+                            width: 2,
+                            style: BorderStyle.solid),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(
+                            color: Colors.deepOrange,
+                            width: 2,
+                            style: BorderStyle.solid),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(
+                            color: Colors.deepOrange,
+                            width: 2,
+                            style: BorderStyle.solid),
                       ),
                     ),
                     textAlign: TextAlign.center,

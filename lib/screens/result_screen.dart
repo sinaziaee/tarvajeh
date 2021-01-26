@@ -15,14 +15,16 @@ class ResultsScreen extends StatefulWidget {
 
 class _ResultsScreenState extends State<ResultsScreen> {
   Completer<WebViewController> _controller = Completer<WebViewController>();
-  String resultUrl = 'https://tarvajeh.ir/en/result?pack_id=730&hash=424af8034638b26db42fa46cdd6f3b5c149283d5aa02433faaa3cf54';
-  bool isLoading=true;
+  String resultUrl;
   bool isPersian;
   Map args;
   @override
   Widget build(BuildContext context) {
     args = ModalRoute.of(context).settings.arguments;
     isPersian = args['isPersian'];
+    String language = isPersian ? 'fa' : 'en';
+    resultUrl = 'https://tarvajeh.ir/$language/result?pack_id=730&hash=424af8034638b26db42fa46cdd6f3b5c149283d5aa02433faaa3cf54';
+    bool isLoading=true;
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -37,10 +39,13 @@ class _ResultsScreenState extends State<ResultsScreen> {
           elevation: 0,
           centerTitle: true,
           title: Text(
-            kResultTitle(false),
-            style: isPersian?PersianFonts.Shabnam.copyWith(
-              fontSize: 20, color: Colors.white,
-            ): TextStyle(fontSize: 20, color: Colors.white),
+            kResultTitle(isPersian),
+            style: isPersian
+                ? PersianFonts.Shabnam.copyWith(
+              fontSize: 25,
+              color: Colors.white,
+            )
+                : TextStyle(fontSize: 25, color: Colors.white),
           ),
           automaticallyImplyLeading: !isPersian,
           actions: [

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:persian_fonts/persian_fonts.dart';
+import 'package:tarvajeh/utils/constants.dart';
 
 class CustomDialogTextField extends StatelessWidget {
-
   final String text;
   final bool isPersian;
   final IconData iconData;
@@ -10,7 +11,14 @@ class CustomDialogTextField extends StatelessWidget {
   final int maxLines;
   final TextDirection direction;
 
-  CustomDialogTextField({this.iconData, this.isPersian, this.text, this.controller, this.height, this.maxLines, this.direction});
+  CustomDialogTextField(
+      {this.iconData,
+      this.isPersian,
+      this.text,
+      this.controller,
+      this.height,
+      this.maxLines,
+      this.direction});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +36,9 @@ class CustomDialogTextField extends StatelessWidget {
             ),
             child: Icon(iconData),
           ),
-          SizedBox(width: 5,),
+          SizedBox(
+            width: 5,
+          ),
           Expanded(
             child: TextField(
               // textDirection: isPersian?TextDirection.rtl:TextDirection.ltr,
@@ -36,9 +46,20 @@ class CustomDialogTextField extends StatelessWidget {
               maxLines: maxLines,
               controller: controller,
               decoration: InputDecoration(
+                labelStyle: isPersian
+                    ? PersianFonts.Shabnam.copyWith(
+                        fontSize: 15,
+                        color: Colors.grey[700],
+                      )
+                    : TextStyle(fontSize: 15, color: Colors.grey[700]),
                 alignLabelWithHint: true,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(
+                      color: kDarkGreen, width: 2, style: BorderStyle.solid),
                 ),
                 labelText: text,
               ),

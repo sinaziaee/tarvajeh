@@ -19,10 +19,11 @@ class ContactBox extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: Colors.white, width: 2,
         ),
-        gradient: LinearGradient(
-            colors: [kBrown, kBlueGreen, ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter),
+        // gradient: LinearGradient(
+        //     colors: [kBrown, kBlueGreen, ],
+        //     begin: Alignment.topCenter,
+        //     end: Alignment.bottomCenter),
+        color: kGrey,
     ),
       child: Column(
         mainAxisSize: MainAxisSize.min,

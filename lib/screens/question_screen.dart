@@ -46,7 +46,15 @@ class _QuestionScreenState extends State<QuestionScreen> {
           elevation: 0,
           backgroundColor: Colors.transparent,
           centerTitle: true,
-          title: Text('Questions'),
+          title: Text(
+            kQuestionsTitle(isPersian),
+            style: isPersian
+                ? PersianFonts.Shabnam.copyWith(
+              fontSize: 25,
+              color: Colors.white,
+            )
+                : TextStyle(fontSize: 25, color: Colors.white),
+          ),
           automaticallyImplyLeading: !isPersian,
           actions: [
             if (isPersian) ...[
@@ -95,7 +103,10 @@ class _QuestionScreenState extends State<QuestionScreen> {
                             margin: EdgeInsets.symmetric(horizontal: 1),
                             height: 20,
                             width: 20,
-                            color: Colors.grey,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.grey[200],
+                            ),
                           );
                         },
                       ),
@@ -169,9 +180,22 @@ class _QuestionScreenState extends State<QuestionScreen> {
                     CustomBorderButton(
                       isPersian: isPersian,
                       text: kButtonFinishText(isPersian),
-                      onPressed: () {},
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          child: FinishDialog(
+                            isPersian: isPersian,
+                            onPressed: (){},
+                            emailController: emailController,
+                            sugCriController: sugCriController,
+                          ),
+                        );
+                      },
                       color: Colors.red,
                       textColor: Colors.white,
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                   ],
                 ),

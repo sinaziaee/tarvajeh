@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:persian_fonts/persian_fonts.dart';
 import 'package:tarvajeh/components/custom_dialog_text_field.dart';
 import 'package:tarvajeh/utils/language_brain.dart';
 
@@ -27,7 +28,19 @@ class FinishDialog extends StatelessWidget {
               color: Colors.green,
               size: 50,
             ),
-            Text(kFinishDialogTitle(isPersian)),
+            Text(
+              kFinishDialogTitle(isPersian),
+              style: isPersian
+                  ? PersianFonts.Shabnam.copyWith(
+                      fontSize: 20,
+                      color: Colors.black,
+                    )
+                  : TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      height: 2.0,
+                    ),
+            ),
           ],
         ),
       ),
@@ -37,6 +50,16 @@ class FinishDialog extends StatelessWidget {
             Text(
               kFinishDialogContent(isPersian),
               textDirection: isPersian ? TextDirection.rtl : TextDirection.ltr,
+              style: isPersian
+                  ? PersianFonts.Shabnam.copyWith(
+                      fontSize: 15,
+                      color: Colors.black,
+                    )
+                  : TextStyle(
+                      fontSize: 15,
+                      color: Colors.black,
+                      height: 2.0,
+                    ),
             ),
             SizedBox(
               height: 20,
@@ -48,7 +71,7 @@ class FinishDialog extends StatelessWidget {
               controller: emailController,
               height: 50,
               maxLines: 2,
-              direction: TextDirection.ltr,
+              direction: isPersian?TextDirection.rtl:TextDirection.ltr
             ),
             SizedBox(
               height: 10,

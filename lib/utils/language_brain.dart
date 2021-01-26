@@ -200,11 +200,25 @@ String kPurposeQuote(bool isPersian){
       '"Rumi"';
 }
 
+String kQuestionsTitle(bool isPersian){
+  if(isPersian){
+    return 'سوالات';
+  }
+  return 'Questions';
+}
+
 String kRoleDev(bool isPersian){
   if(isPersian){
     return 'توسعه‌دهنده';
   }
   return 'DEVELOPER';
+}
+
+String kInternetTitle(bool isPersian){
+  if(isPersian){
+    return 'لطفا از اتصال خود به اینترنت مطمئن شوید';
+  }
+  return 'Please check your internet connection';
 }
 
 String kRoleProductOwner(bool isPersian){
