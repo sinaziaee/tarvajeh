@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:persian_fonts/persian_fonts.dart';
 import 'package:tarvajeh/components/custom_button.dart';
 import 'package:tarvajeh/components/gender_button.dart';
 import 'package:tarvajeh/components/language_button.dart';
+import 'package:tarvajeh/utils/constants.dart';
 import 'package:tarvajeh/utils/language_brain.dart';
 
 import 'question_screen.dart';
@@ -28,152 +30,202 @@ class _FormScreenState extends State<FormScreen> {
     args = ModalRoute.of(context).settings.arguments;
     isPersian = args['isPersian'];
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        title: Text(
-          kFormTitle(isPersian),
-        ),
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+            colors: [kGrey, kMediumGreen, ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30),
-          child: Column(
-            crossAxisAlignment:
-                isPersian ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 50,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Text(
-                kFormAge(isPersian),
-                textDirection:
-                    isPersian ? TextDirection.rtl : TextDirection.ltr,
-                style: TextStyle(fontSize: 20),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                height: 40,
-                width: 100,
-                child: TextField(
-                  controller: ageController,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                  ),
-                  textAlign: TextAlign.center,
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          centerTitle: true,
+          title: Text(
+            kFormTitle(isPersian),
+          ),
+          automaticallyImplyLeading: !isPersian,
+          actions: [
+            if(isPersian)...[
+              IconButton(icon: Icon(Icons.chevron_right, color: Colors.white,), onPressed: (){
+                Navigator.pop(context);
+              }),
+            ]
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            child: Column(
+              crossAxisAlignment:
+                  isPersian ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 50,
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                kFormGender(isPersian),
-                textDirection:
-                isPersian ? TextDirection.rtl : TextDirection.ltr,
-                style: TextStyle(fontSize: 20),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GenderButton(
-                    imgPath: 'assets/images/man.png',
-                    color: isManSelected?activeColor:deActiveColor,
-                    onPressed: () {
-                      onGenderSelected('man');
-                    },
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  kFormAge(isPersian),
+                  textDirection:
+                      isPersian ? TextDirection.rtl : TextDirection.ltr,
+                  style: isPersian
+                      ? PersianFonts.Shabnam.copyWith(fontSize: 20, color: Colors.white)
+                      : TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
                   ),
-                  GenderButton(
-                    imgPath: 'assets/images/woman.png',
-                    color: isWomanSelected?activeColor:deActiveColor,
-                    onPressed: () {
-                      onGenderSelected('woman');
-                    },
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Container(
+                  height: 40,
+                  width: 100,
+                  child: TextField(
+                    controller: ageController,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      focusColor: Colors.white,
+                      fillColor: Colors.white,
+                      filled: true,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                ],
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                kFormNativeLanguage(isPersian),
-                textDirection:
-                isPersian ? TextDirection.rtl : TextDirection.ltr,
-                style: TextStyle(fontSize: 20),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  LanguageButton(
-                    text: isPersian?'فارسی':'Persian',
-                    color: isPersianNative?activeLanguageColor:deActiveColor,
-                    onPressed: () {
-                      onNativeLanguageSelected('persian');
-                    },
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  kFormGender(isPersian),
+                  textDirection:
+                  isPersian ? TextDirection.rtl : TextDirection.ltr,
+                  style: isPersian
+                      ? PersianFonts.Shabnam.copyWith(fontSize: 20, color: Colors.white)
+                      : TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
                   ),
-                  LanguageButton(
-                    text: isPersian?'انگلیسی':'English',
-                    color: isEnglishNative?activeLanguageColor:deActiveColor,
-                    onPressed: () {
-                      onNativeLanguageSelected('english');
-                    },
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GenderButton(
+                      isPersian: isPersian,
+                      imgPath: 'assets/images/man.png',
+                      color: isManSelected?activeColor:deActiveColor,
+                      onPressed: () {
+                        onGenderSelected('man');
+                      },
+                    ),
+                    GenderButton(
+                      isPersian: isPersian,
+                      imgPath: 'assets/images/woman.png',
+                      color: isWomanSelected?activeColor:deActiveColor,
+                      onPressed: () {
+                        onGenderSelected('woman');
+                      },
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  kFormNativeLanguage(isPersian),
+                  textDirection:
+                  isPersian ? TextDirection.rtl : TextDirection.ltr,
+                  style: isPersian
+                      ? PersianFonts.Shabnam.copyWith(fontSize: 20, color: Colors.white)
+                      : TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
                   ),
-                ],
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                kFormTestLanguage(isPersian),
-                textDirection:
-                isPersian ? TextDirection.rtl : TextDirection.ltr,
-                style: TextStyle(fontSize: 20),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  LanguageButton(
-                    text: isPersian?'فارسی':'Persian',
-                    color: isPersianForm?activeLanguageColor:deActiveColor,
-                    onPressed: () {
-                      onTestLanguageSelected('persian');
-                    },
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    LanguageButton(
+                      isPersian: isPersian,
+                      text: isPersian?'فارسی':'Persian',
+                      color: isPersianNative?activeLanguageColor:deActiveColor,
+                      onPressed: () {
+                        onNativeLanguageSelected('persian');
+                      },
+                    ),
+                    LanguageButton(
+                      isPersian: isPersian,
+                      text: isPersian?'انگلیسی':'English',
+                      color: isEnglishNative?activeLanguageColor:deActiveColor,
+                      onPressed: () {
+                        onNativeLanguageSelected('english');
+                      },
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  kFormTestLanguage(isPersian),
+                  textDirection:
+                  isPersian ? TextDirection.rtl : TextDirection.ltr,
+                  style: isPersian
+                      ? PersianFonts.Shabnam.copyWith(fontSize: 20, color: Colors.white)
+                      : TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
                   ),
-                  LanguageButton(
-                    text: isPersian?'انگلیسی':'English',
-                    color: isEnglishForm?activeLanguageColor:deActiveColor,
-                    onPressed: () {
-                      onTestLanguageSelected('english');
-                    },
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              CustomButton(
-                color: Colors.orange,
-                onPressed: (){
-                  _submit();
-                },
-                text: kButtonSubmit(isPersian),
-              ),
-            ],
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    LanguageButton(
+                      isPersian: isPersian,
+                      text: isPersian?'فارسی':'Persian',
+                      color: isPersianForm?activeLanguageColor:deActiveColor,
+                      onPressed: () {
+                        onTestLanguageSelected('persian');
+                      },
+                    ),
+                    LanguageButton(
+                      isPersian: isPersian,
+                      text: isPersian?'انگلیسی':'English',
+                      color: isEnglishForm?activeLanguageColor:deActiveColor,
+                      onPressed: () {
+                        onTestLanguageSelected('english');
+                      },
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                CustomButton(
+                  isPersian: isPersian,
+                  color: Colors.orange,
+                  onPressed: (){
+                    _submit();
+                  },
+                  text: kButtonSubmit(isPersian),
+                ),
+              ],
+            ),
           ),
         ),
       ),

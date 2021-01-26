@@ -18,32 +18,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // localizationsDelegates: [
-      //   // ... app-specific localization delegate[s] here
-      //   AppLocalizations.delegate,
-      //   GlobalMaterialLocalizations.delegate,
-      //   GlobalWidgetsLocalizations.delegate,
-      //   GlobalCupertinoLocalizations.delegate,
-      // ],
-      // supportedLocales: [
-      //   const Locale('en', ''), // English, no country code
-      //   const Locale('ar', ''), // Arabic, no country code
-      // ],
-      //
-      // localeResolutionCallback: (locale, supportedLocales){
-      //   for (var supportedLocale in supportedLocales) {
-      //     if (supportedLocale.languageCode == locale.languageCode){
-      //       return supportedLocale;
-      //     }
-      //     // if (supportedLocale.languageCode == locale.languageCode && supportedLocale.countryCode == locale.countryCode){
-      //     //   return supportedLocale;
-      //     // }
-      //   }
-      //   return supportedLocales.first;
-      // },
       theme: ThemeData(
-        // accentColor: Colors.transparent,
-        primaryColor: Colors.orange,
+        // primaryColor: Colors.orange,
       ),
       initialRoute: HomeScreen.id,
       routes: {

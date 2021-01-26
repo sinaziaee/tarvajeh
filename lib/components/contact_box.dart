@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:persian_fonts/persian_fonts.dart';
+import 'package:tarvajeh/utils/constants.dart';
 
 class ContactBox extends StatelessWidget {
 
   final String name, role, email, siteUrl, webLink;
   final Function onWebTap, onEmailTap;
+  final bool isPersian;
 
-  ContactBox({this.name, this.role, this.email, this.siteUrl, this.webLink, this.onEmailTap, this.onWebTap});
+  ContactBox({this.name, this.role, this.email, this.siteUrl, this.webLink, this.onEmailTap, this.onWebTap, this.isPersian});
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +17,13 @@ class ContactBox extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.black, width: 0.5),
-      ),
+        border: Border.all(color: Colors.white, width: 2,
+        ),
+        gradient: LinearGradient(
+            colors: [kBrown, kBlueGreen, ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter),
+    ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -23,17 +31,17 @@ class ContactBox extends StatelessWidget {
           Text(
             name,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20,
-            ),
+            style: isPersian?PersianFonts.Shabnam.copyWith(
+              fontSize: 20, color: Colors.white,
+            ): TextStyle(fontSize: 20, color: Colors.white),
           ),
           SizedBox(height: 10,),
           Text(
             role,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 18,
-            ),
+            style: isPersian?PersianFonts.Shabnam.copyWith(
+              fontSize: 18, color: Colors.white,
+            ): TextStyle(fontSize: 18, color: Colors.white),
           ),
           SizedBox(height: 10,),
           SingleChildScrollView(
@@ -41,14 +49,14 @@ class ContactBox extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.email),
+                Icon(Icons.email, color: Colors.white,),
                 Text(
                   email,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 15,
-                  ),
+                  style: isPersian?PersianFonts.Shabnam.copyWith(
+                    fontSize: 18, color: Colors.white,
+                  ): TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ],
             ),
@@ -61,16 +69,16 @@ class ContactBox extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.home),
+                  Icon(Icons.home, color: Colors.white,),
                   GestureDetector(
                     onTap: onWebTap,
                     child: Text(
                       webLink,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 15,
-                      ),
+                        style: isPersian?PersianFonts.Shabnam.copyWith(
+                          fontSize: 15, color: Colors.white,
+                        ): TextStyle(fontSize: 15, color: Colors.white),
                     ),
                   ),
                 ],

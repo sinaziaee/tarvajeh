@@ -69,6 +69,7 @@ class FinishDialog extends StatelessWidget {
               color: Colors.green[400],
               onPressed: onPressed,
               text: kFinishDialogButton(isPersian),
+              isPersian: isPersian,
             ),
           ],
         ),

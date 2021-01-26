@@ -5,8 +5,9 @@ class GenderButton extends StatelessWidget {
   final String imgPath;
   final Color color;
   final Function onPressed;
+  final bool isPersian;
 
-  GenderButton({this.imgPath, this.onPressed, this.color});
+  GenderButton({this.imgPath, this.onPressed, this.color, this.isPersian});
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +18,9 @@ class GenderButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           side: BorderSide(
               color: Colors.red,
-              width: 1,
+              width: 2,
               style: BorderStyle.solid),
-          borderRadius: BorderRadius.circular(2),
+          borderRadius: BorderRadius.circular(5),
         ),
         onPressed: onPressed,
         child: Image(
